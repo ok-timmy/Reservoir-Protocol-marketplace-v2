@@ -13,7 +13,7 @@ const onetimeLink = async (
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
-      Authorization: 'Bearer 90c5576d-96d4-4c2f-a50e-92585a879807',
+      Authorization:  `Bearer ${process.env.API_KEY}`,
     },
     data: {
       contractId,
