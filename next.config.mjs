@@ -5,6 +5,9 @@ const nextConfig = {
   experimental: {
     transpilePackages: ['@reservoir0x/reservoir-kit-ui'],
   },
+  images: {
+    "domains":["withpaper.com"]
+  },
   async headers() {
     return [
       {

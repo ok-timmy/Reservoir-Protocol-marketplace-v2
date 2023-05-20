@@ -5,7 +5,10 @@ import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ConnectWalletButton } from 'components/ConnectWalletButton'
+// import { ConnectWalletButton } from 'components/ConnectWalletButton'
+import {
+  ConnectButton,
+} from "@paperxyz/embedded-wallet-service-rainbowkit";
 import NavItem from './NavItem'
 import ThemeSwitcher from './ThemeSwitcher'
 import HamburgerMenu from './HamburgerMenu'
@@ -61,7 +64,7 @@ const Navbar = () => {
           <Link href="/">
             <Box css={{ width: 34, cursor: 'pointer' }}>
               <Image
-                src="/reservoirLogo.svg"
+                src="https://withpaper.com/favicon.ico"
                 width={34}
                 height={39}
                 alt="Reservoir"
@@ -147,7 +150,7 @@ const Navbar = () => {
           <AccountSidebar />
         ) : (
           <Box css={{ maxWidth: '185px' }}>
-            <ConnectWalletButton />
+            <ConnectButton />
           </Box>
         )}
       </Flex>

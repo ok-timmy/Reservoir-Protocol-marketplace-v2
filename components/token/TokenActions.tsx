@@ -97,10 +97,12 @@ export const TokenActions: FC<Props> = ({
           >
             <BuyNow
               tokenId={token.token?.tokenId}
+              imageId = {token.token?.image}
+              contractAddress = {token.token?.contract}
               collectionId={token.token?.collection?.id}
               buttonCss={{ flex: 1, justifyContent: 'center' }}
               buttonProps={{ corners: 'square' }}
-              buttonChildren="Buy Now"
+              buttonChildren="Buy With Paper"
               mutate={mutate}
             />
             <AddToCart

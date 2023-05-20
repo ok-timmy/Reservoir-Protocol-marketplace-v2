@@ -7,9 +7,13 @@ import { Button } from 'components/primitives'
 import { useConnectModal } from '@rainbow-me/rainbowkit'
 import { CSS } from '@stitches/react'
 import { useMarketplaceChain } from 'hooks'
+import { renderPaperCheckoutLink } from '@paperxyz/js-client-sdk'
+import axios from 'axios'
 
 type Props = {
   tokenId?: string
+  imageId?: string
+  contractAddress: string | undefined
   collectionId?: string
   orderId?: string
   buttonCss?: CSS
@@ -20,6 +24,8 @@ type Props = {
 
 const BuyNow: FC<Props> = ({
   tokenId,
+  imageId,
+  contractAddress,
   collectionId,
   orderId = undefined,
   mutate,
@@ -37,6 +43,15 @@ const BuyNow: FC<Props> = ({
   const isInTheWrongNetwork = Boolean(
     signer && activeChain?.id !== marketplaceChain.id
   )
+
+  const openCheckout = async(tokens: Array<Object>) => {
+   await fetch("http://localhost:3000/api/onetimeLink", {
+    
+   })
+      // renderPaperCheckoutLink({
+      //   checkoutLinkUrl: "https://withpaper.com/checkout/...",
+      // });
+  }
 
   const trigger = (
     <Button css={buttonCss} color="primary" {...buttonProps}>
@@ -67,19 +82,28 @@ const BuyNow: FC<Props> = ({
       {buttonChildren}
     </Button>
   ) : (
-    <BuyModal
-      trigger={trigger}
-      tokenId={tokenId}
-      collectionId={collectionId}
-      orderId={orderId}
-      //CONFIGURABLE: set any fees on top of orders, note that these will only
-      // apply to native orders (using the reservoir order book) and not to external orders (opensea, blur etc)
-      // referrer={"0xabc"}
-      // referrerFeeBps={250}
-      onClose={(data, stepData, currentStep) => {
-        if (mutate && currentStep == BuyStep.Complete) mutate()
-      }}
-    />
+    // <BuyModal
+    //   trigger={trigger}
+    //   tokenId={tokenId}
+    //   collectionId={collectionId}
+    //   orderId={orderId}
+    //   //CONFIGURABLE: set any fees on top of orders, note that these will only
+    //   // apply to native orders (using the reservoir order book) and not to external orders (opensea, blur etc)
+    //   // referrer={"0xabc"}
+    //   // referrerFeeBps={250}
+    //   onClose={(data, stepData, currentStep) => {
+    //     if (mutate && currentStep == BuyStep.Complete) mutate()
+    //   }}
+    // />
+
+    <Button
+      css={buttonCss}
+      aria-haspopup="dialog"
+      color="primary"
+      onClick={() => openCheckout([{ token: `${contractAddress}:${tokenId}` }])}
+    >
+      {buttonChildren}
+    </Button>
   )
 }
 
