@@ -104,16 +104,16 @@ const Navbar = () => {
             <Box css={{ width: 112, cursor: 'pointer' }}>
               {theme == 'dark' ? (
                 <Image
-                  src="/reservoirMarketLogo.svg"
-                  width={112}
-                  height={36}
+                  src="https://withpaper.com/favicon.ico"
+                  width={56}
+                  height={18}
                   alt="Reservoir"
                 />
               ) : (
                 <Image
-                  src="/reservoirMarketLogoLight.svg"
-                  width={112}
-                  height={36}
+                  src="https://withpaper.com/favicon.ico"
+                  width={56}
+                  height={18}
                   alt="Reservoir"
                 />
               )}

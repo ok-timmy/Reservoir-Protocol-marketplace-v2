@@ -8,11 +8,12 @@ import { useConnectModal } from '@rainbow-me/rainbowkit'
 import { CSS } from '@stitches/react'
 import { useMarketplaceChain } from 'hooks'
 import { renderPaperCheckoutLink } from '@paperxyz/js-client-sdk'
-import axios from 'axios'
 
 type Props = {
   tokenId?: string
-  imageId?: string
+  imageId?: string | undefined
+  title?: string | undefined
+  description?: string | undefined
   contractAddress: string | undefined
   collectionId?: string
   orderId?: string
@@ -25,6 +26,8 @@ type Props = {
 const BuyNow: FC<Props> = ({
   tokenId,
   imageId,
+  title,
+  description,
   contractAddress,
   collectionId,
   orderId = undefined,
@@ -44,13 +47,33 @@ const BuyNow: FC<Props> = ({
     signer && activeChain?.id !== marketplaceChain.id
   )
 
-  const openCheckout = async(tokens: Array<Object>) => {
-   await fetch("http://localhost:3000/api/onetimeLink", {
-    
-   })
-      // renderPaperCheckoutLink({
-      //   checkoutLinkUrl: "https://withpaper.com/checkout/...",
-      // });
+  const openCheckout = async (
+    tokens: Array<Object>,
+    imageId: string | undefined,
+    title: string | undefined,
+    description: string | undefined
+  ) => {
+    try {
+      const res = await fetch('http://localhost:3000/api/paper/one-time-link', {
+        method: 'POST',
+        body: JSON.stringify({
+          title,
+          description,
+          imageUrl: imageId,
+          nftArray: tokens,
+        }),
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      const data = await res.json()
+      console.log(data?.data?.checkoutLinkIntentUrl)
+      renderPaperCheckoutLink({
+        checkoutLinkUrl: `${data?.data?.checkoutLinkIntentUrl}`,
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const trigger = (
@@ -100,7 +123,14 @@ const BuyNow: FC<Props> = ({
       css={buttonCss}
       aria-haspopup="dialog"
       color="primary"
-      onClick={() => openCheckout([{ token: `${contractAddress}:${tokenId}` }])}
+      onClick={() =>
+        openCheckout(
+          [{ token: `${contractAddress}:${tokenId}` }],
+          imageId,
+          title,
+          description
+        )
+      }
     >
       {buttonChildren}
     </Button>

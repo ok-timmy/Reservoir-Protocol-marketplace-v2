@@ -98,6 +98,8 @@ export const TokenActions: FC<Props> = ({
             <BuyNow
               tokenId={token.token?.tokenId}
               imageId = {token.token?.image}
+              title = {token.token?.name}
+              description={token.token?.description}
               contractAddress = {token.token?.contract}
               collectionId={token.token?.collection?.id}
               buttonCss={{ flex: 1, justifyContent: 'center' }}

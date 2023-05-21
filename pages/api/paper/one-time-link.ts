@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
-const onetimeLink = async (
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
@@ -13,10 +13,10 @@ const onetimeLink = async (
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
-      Authorization:  `Bearer ${process.env.API_KEY}`,
+      Authorization: `Bearer ${process.env.API_KEY}`,
     },
     data: {
-      contractId,
+      contractId: `${process.env.CONTRACT_ID}`,
       title,
       description,
       imageUrl,
@@ -47,7 +47,7 @@ const onetimeLink = async (
   axios
     .request(options)
     .then(function (response) {
-      console.log(response.data)
+      console.log(response)
       return res.status(200).json({ data: response.data })
     })
     .catch(function (error) {
@@ -56,4 +56,4 @@ const onetimeLink = async (
     })
 }
 
-export default onetimeLink
+export default handler
