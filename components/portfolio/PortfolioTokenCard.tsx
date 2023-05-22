@@ -401,7 +401,6 @@ export default ({
             tokenId={token.token?.tokenId}
             imageId={token.token?.image}
             title={token.token?.name}
-            description={token.token?.description}
             contractAddress={token.token?.tokenId}
             collectionId={token.token?.collection?.id}
             mutate={mutate}
