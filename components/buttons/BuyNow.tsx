@@ -14,7 +14,7 @@ type Props = {
   imageId?: string | undefined
   title?: string | undefined
   description?: string | undefined
-  contractAddress: string | undefined
+  contractAddress?: string | undefined
   collectionId?: string
   orderId?: string
   buttonCss?: CSS
