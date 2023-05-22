@@ -104,7 +104,7 @@ export const TokenActions: FC<Props> = ({
               collectionId={token.token?.collection?.id}
               buttonCss={{ flex: 1, justifyContent: 'center' }}
               buttonProps={{ corners: 'square' }}
-              buttonChildren="Buy With Paper"
+              buttonChildren="Buy With Card"
               mutate={mutate}
             />
             <AddToCart

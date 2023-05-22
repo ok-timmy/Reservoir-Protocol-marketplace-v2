@@ -13,6 +13,7 @@ const CartButton = () => {
       onConnectWallet={() => {
         openConnectModal?.()
       }}
+      
       trigger={
         <Button
           css={{

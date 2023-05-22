@@ -54,7 +54,7 @@ const BuyNow: FC<Props> = ({
     description: string | undefined
   ) => {
     try {
-      const res = await fetch('http://localhost:3000/api/paper/one-time-link', {
+      const res = await fetch(`${window.location.origin}/api/paper/one-time-link`, {
         method: 'POST',
         body: JSON.stringify({
           title,

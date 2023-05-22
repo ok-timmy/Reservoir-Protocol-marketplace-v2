@@ -320,6 +320,10 @@ export default ({
         >
           <BuyNow
             tokenId={token.token?.tokenId}
+            imageId = {token.token?.image}
+            title = {token.token?.name}
+            description={token.token?.description}
+            contractAddress={token.token?.contract}
             collectionId={token.token?.collection?.id}
             mutate={mutate}
             buttonCss={{
@@ -329,7 +333,7 @@ export default ({
             buttonProps={{
               corners: 'square',
             }}
-            buttonChildren="Buy Now"
+            buttonChildren="Buy With Card"
           />
           {addToCartEnabled ? (
             <AddToCart
