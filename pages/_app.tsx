@@ -33,7 +33,10 @@ import ToastContextProvider from 'context/ToastContextProvider'
 import supportedChains from 'utils/chains'
 import { useMarketplaceChain } from 'hooks'
 import ChainContextProvider from 'context/ChainContextProvider'
-import { PaperEmbeddedWalletProvider } from '@paperxyz/embedded-wallet-service-rainbowkit'
+import {
+  PaperEmbeddedWalletProvider,
+  PaperEmbeddedWalletRainbowKitWallet,
+} from '@paperxyz/embedded-wallet-service-rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'
 
 //CONFIGURABLE: Use nextjs to load your own custom font: https://nextjs.org/docs/basic-features/font-optimization
@@ -79,24 +82,24 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
         light: 'light',
       }}
     >
-      {/* <WagmiConfig client={wagmiClient}> */}
-      <PaperEmbeddedWalletProvider
-        appName="Paper RainbowKit Provider Example"
-        walletOptions={{
-          clientId: `${process.env.CLIENT_ID}`,
-          chain: 'Polygon',
-          name: 'Paper Inc',
-          iconUrl: 'https://withpaper.com/favicon.ico',
-          iconBackground: '#000000',
-        }}
-      >
+      <WagmiConfig client={wagmiClient}>
         <ChainContextProvider>
           <AnalyticsProvider>
-            <MyApp {...props} />
+            <PaperEmbeddedWalletProvider
+              appName="Paper RainbowKit Provider Example"
+              walletOptions={{
+                clientId: '90c5576d-96d4-4c2f-a50e-92585a879807',
+                chain: 'Polygon',
+                name: 'Paper Inc',
+                iconUrl: 'https://withpaper.com/favicon.ico',
+                iconBackground: '#000000',
+              }}
+            >
+              <MyApp {...props} />
+            </PaperEmbeddedWalletProvider>
           </AnalyticsProvider>
         </ChainContextProvider>
-      </PaperEmbeddedWalletProvider>
-      {/* </WagmiConfig> */}
+      </WagmiConfig>
     </ThemeProvider>
   )
 }

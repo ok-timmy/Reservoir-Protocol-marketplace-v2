@@ -676,7 +676,7 @@
     "@ethersproject/providers" "^5.7.2"
     "@paperxyz/sdk-common-utilities" "*"
 
-"@paperxyz/embedded-wallet-service-wagmi@*":
+"@paperxyz/embedded-wallet-service-wagmi@*", "@paperxyz/embedded-wallet-service-wagmi@^2.1.0":
   version "2.1.0"
   resolved "https://registry.npmjs.org/@paperxyz/embedded-wallet-service-wagmi/-/embedded-wallet-service-wagmi-2.1.0.tgz"
   integrity sha512-MRRR1u+2hpd9Gugx1XlVZ32LNxuMLklLt2v+w+zrb4lClZyPCUtfwqVBYfHSe10ddD4iOn5yshZtE/Zvu3rYdg==
