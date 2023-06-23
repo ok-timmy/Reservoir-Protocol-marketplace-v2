@@ -88,7 +88,7 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
             <PaperEmbeddedWalletProvider
               appName="Paper RainbowKit Provider Example"
               walletOptions={{
-                clientId: '90c5576d-96d4-4c2f-a50e-92585a879807',
+                clientId: '54d61288-d439-4ca0-975f-7818ab44b34d',
                 chain: 'Polygon',
                 name: 'Paper Inc',
                 iconUrl: 'https://withpaper.com/favicon.ico',

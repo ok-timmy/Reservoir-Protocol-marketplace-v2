@@ -15,7 +15,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@next/font": "^13.1.6",
     "@paperxyz/embedded-wallet-service-rainbowkit": "^0.1.0",
-    "@paperxyz/embedded-wallet-service-wagmi": "^2.1.0",
+    "@paperxyz/embedded-wallet-service-wagmi": "^2.2.0",
     "@paperxyz/js-client-sdk": "^0.2.0",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/popper": "^0.1.0",
